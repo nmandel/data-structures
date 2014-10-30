@@ -25,6 +25,10 @@ var makeLinkedList = function(){
     keyHead++;
     list.head = list[keyHead];
     count--;
+    if (count === 0) {
+      list.head = null;
+      list.tail = null;
+    }
     return removedHead;
   };
 

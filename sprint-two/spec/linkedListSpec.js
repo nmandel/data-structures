@@ -51,5 +51,22 @@ describe('linkedList', function() {
     expect(linkedList.contains(4)).to.equal(false);
   });
 
+  it('should reset head and tail to null after all are removed', function() {
+    linkedList.addToTail(4);
+    linkedList.removeHead();
+    expect(linkedList.head).to.equal(null);
+    expect(linkedList.tail).to.equal(null);
+  });
+
+  it('should set one remaining value to be both head and tail', function() {
+    linkedList.addToTail(4);
+    linkedList.addToTail(5);
+    linkedList.addToTail(6);
+    linkedList.removeHead();
+    linkedList.removeHead();
+    expect(linkedList.head.value).to.equal(6);
+    expect(linkedList.tail.value).to.equal(6);
+  });
+
   // add more tests here to test the functionality of linkedList
 });
