@@ -2,50 +2,36 @@ var makeLinkedList = function(){
   var list = {};
   list.head = null;
   list.tail = null;
-  var count = 0;
-  var prevNode;
-
 
   list.addToTail = function(value){
-    var currentNode = makeNode(value);
-    count++;
-    if ( count > 1) {
-      prevNode.next = currentNode.value;
+    var newNode = makeNode(value);
+    if (list.tail) {
+      list.tail.next = newNode;
     } else {
-      list.head = currentNode;
+      list.head = newNode;
     }
-    list.tail = currentNode;
-    prevNode = currentNode;
-
-
-    // list.tail = node;
-    // list[keyTail] = node;
-    // if (count === 0) {
-    //   list.head = node;
-    //   list[keyHead] = node;
-    // }
-    // keyTail++;
-    // count++;
+    list.tail = newNode;
   };
 
   list.removeHead = function(){
-    var removedHead = list[keyHead]['value'];
-    delete list[keyHead];
-    keyHead++;
-    list.head = list[keyHead];
-    count--;
-    if (count === 0) {
-      list.head = null;
+    var removedHead = list.head.value;
+    list.head = list.head.next;
+    if (!list.head) {
       list.tail = null;
     }
     return removedHead;
   };
 
   list.contains = function(target){
-    for (var i = keyHead; i < count; i++) {
-      if (list[i].value === target) {
+    var node = list.head;
+    if (node.value === target) {
+      return true;
+    }
+    while (node !== list.tail) {
+      if (node.next.value === target) {
         return true;
       }
+      node = node.next;
     }
     return false;
   };
