@@ -2,21 +2,30 @@ var makeLinkedList = function(){
   var list = {};
   list.head = null;
   list.tail = null;
-  var keyTail = 0;
-  var keyHead = 0;
   var count = 0;
+  var prevNode;
+
 
   list.addToTail = function(value){
-    value = makeNode(value);
-
-    list.tail = value;
-    list[keyTail] = value;
-    if (count === 0) {
-      list.head = value;
-      list[keyHead] = value;
-    }
-    keyTail++;
+    var currentNode = makeNode(value);
     count++;
+    if ( count > 1) {
+      prevNode.next = currentNode.value;
+    } else {
+      list.head = currentNode;
+    }
+    list.tail = currentNode;
+    prevNode = currentNode;
+
+
+    // list.tail = node;
+    // list[keyTail] = node;
+    // if (count === 0) {
+    //   list.head = node;
+    //   list[keyHead] = node;
+    // }
+    // keyTail++;
+    // count++;
   };
 
   list.removeHead = function(){
