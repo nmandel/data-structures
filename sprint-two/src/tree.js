@@ -16,28 +16,12 @@ treeMethods.contains = function(target){
   if (this.value === target) {
     return true;
   }
-  // if (Array.isArray(this.children)) {
   for (var i = 0; i < this.children.length; i++) {
     if (this.children[i].contains(target)) {
       return true;
     }
   }
-  // }
   return false;
-
-    /*var wasFound = false;
-    var helper = function(parent) {
-      if (parent.value === target) {
-        wasFound = true;
-      }
-      if (Array.isArray(parent.children) && !wasFound) {
-        for (var i = 0; i < parent.children.length; i++) {
-          helper(parent.children[i]);
-        }
-      }
-    }
-    helper(this);
-    return wasFound; */
 };
 
 

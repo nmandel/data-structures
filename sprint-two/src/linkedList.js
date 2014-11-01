@@ -22,18 +22,27 @@ var makeLinkedList = function(){
     return removedHead;
   };
 
-  list.contains = function(target){
-    var node = list.head;
-    if (node.value === target) {
-      return true;
-    }
-    while (node !== list.tail) {
-      if (node.next.value === target) {
+  list.contains = function(target) {
+    var node = this.head;
+    // var helper = function(node) {
+      if (node.value === target){
         return true;
       }
-      node = node.next;
-    }
-    return false;
+    //   if (node.next !== null) {
+    //     if (helper(this.next)) {
+    //       return true;
+    //     }
+    //   }
+    //   return false;
+      while (node !== list.tail) {
+        if (node.next.value === target) {
+          return true;
+        }
+        node = node.next;
+      }
+      return false;
+    // };
+    // helper(list.head);
   };
 
   return list;
